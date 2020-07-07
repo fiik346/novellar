@@ -1,0 +1,99 @@
+a:hover {
+  text-decoration: none;
+}
+
+.material-icons {
+  vertical-align: middle;
+}
+/* HEADER STYLE */
+.header {
+  background-color: #fff;
+}
+
+/* Navigasi Bar Atas */
+.header-link {
+  display: inline-block;
+  margin: 5px 6px;
+  padding: 6px 12px;
+  color: #48c6ef;
+  border-radius: 3px;
+  border: 1px solid #48c6ef;
+}
+
+.header-link:hover {
+  background-color: #48c6ef;
+  color: #fff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.header-link.mw {
+  width: 100%;
+}
+
+div#openav {
+  justify-content: flex-end;
+}
+.navbar-collapse .collapse .show.navbar-belakang {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.search {
+  margin: 5px 6px;
+  padding: 6px 12px;
+  color: #48c6ef;
+  border-radius: 3px;
+  border: 1px solid #48c6ef;
+  width: 100%;
+}
+.search.mw {
+}
+
+/* Responsive CSS*/
+@media (max-width: 992px) {
+  .navbar-collapse.collapsing .navbar-nav {
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: -45%;
+    transition: all 0.2s ease;
+  }
+
+  .navbar-collapse.show .navbar-nav {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    flex-direction: column;
+    height: 100%;
+    width: 45%;
+    transition: left 0.35s ease;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  }
+  .search {
+    margin: 7px;
+  }
+  .header-link {
+    margin: 0px;
+    padding: 6px 12px;
+    color: #48c6ef;
+    border: none;
+    border-radius: 0;
+    width: 100%;
+  }
+  .header-link:hover {
+    background: rgba(0, 0, 0, 0.03);
+    box-shadow: none;
+    color: #276b81;
+  }
+}
+@media (max-width: 550px) {
+  .navbar-collapse.collapsing .navbar-nav {
+    left: -70%;
+  }
+  .navbar-collapse.show .navbar-nav {
+    width: 70%;
+  }
+}

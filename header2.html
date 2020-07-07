@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <!-- Meta Tag Bossq -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Novel Nurhidayat</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"/>
+    <style>
+        /*body{
+        color:#373e48;
+        }*/
+        a:hover {
+        text-decoration:none;
+        }
+        /* HEADER STYLE */
+        .header-link {
+        display: inline-block;
+        margin: 5px 6px;
+        padding: 6px 12px;
+        color: #48c6ef ;
+        border-radius: 3px;
+        border: 1px solid #48c6ef ;
+        }
+        .header-link:hover {
+        background-color: #48c6ef ;
+        color: #fff;
+        box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+        }
+        div#openav {
+        justify-content: flex-end;
+        }
+        .search {
+        margin: 5px 6px;
+        padding: 6px 12px;
+        color: #48c6ef ;
+        border-radius: 3px;
+        border: 1px solid #48c6ef ;
+        }
+        .smart-scroll{
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+        }
+        .scrolled-down{
+        transform:translateY(-100%); transition: all 0.3s ease-in-out;
+        }
+        .scrolled-up{
+        transform:translateY(0); transition: all 0.3s ease-in-out;
+        }
+    </style>
+    <style>
+    /***** Wrapper *****/
+    
+    .wrapper {
+        display: block;
+    }
+    
+    /***** Sidebar *****/
+    
+    .sidebar {
+        width: 250px;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: -255px;
+        z-index: 999;
+        background: #333;
+        color: #fff;
+        transition: all .3s;
+        box-shadow: 3px 3px 3px rgba(51, 51, 51, 0.5);
+        text-align: left;
+    }
+    
+    .sidebar.active {
+        left: 0;
+    }
+    
+    /***** Content *****/
+    
+    .content {
+        width: 100%;
+        transition: all 0.3s;
+    }
+    
+    /***** Dark overlay *****/
+ 
+    .overlay {
+        display: none;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(51, 51, 51, 0.7);
+        z-index: 998;
+        opacity: 0;
+        transition: all .5s ease-in-out;
+    }
+    
+    .overlay.active {
+        display: block;
+        opacity: 1;
+    }
+    .open-menu {
+    position: fixed;
+    top: 20px;
+    left: 10px;
+    z-index: 997;
+    box-shadow: 3px 3px 3px rgba(51, 51, 51, 0.2);
+    }
+    
+    .open-menu.btn-customized,
+    .open-menu.btn-customized:hover, 
+    .open-menu.btn-customized:active, 
+    .open-menu.btn-customized:focus, 
+    .open-menu.btn-customized:active:focus, 
+    .open-menu.btn-customized.active:focus,
+    .open-menu.btn-customized.btn.btn-primary:not(:disabled):not(.disabled):active,
+    .open-menu.btn-customized.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
+        box-shadow: 3px 3px 3px rgba(51, 51, 51, 0.2);
+    }
+    
+    /* Style for all buttons with the class btn-customized */
+    
+    a.btn-customized {
+        margin-left: 5px;
+        margin-right: 5px;
+        padding: .75rem 1.5rem;
+        background: #f35b3f;
+        border: 0;
+        border-radius: 4px;
+        font-size: 16px;
+        font-weight: 300;
+        color: #fff;
+        box-shadow: none;
+    }
+    
+    a.btn-customized:hover, 
+    a.btn-customized:active, 
+    a.btn-customized:focus, 
+    a.btn-customized:active:focus, 
+    a.btn-customized.active:focus,
+    a.btn-customized.btn.btn-primary:not(:disabled):not(.disabled):active,
+    a.btn-customized.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
+        outline: 0;
+        background: #cd533d; /* for browsers that don't recognize rgba */
+        background: rgba(243, 91, 63, 0.7);
+        border: 0;
+        color: #fff;
+        box-shadow: none;
+    }
+    
+    .dismiss {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transition: all .3s;
+    background: #444;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 35px;
+    cursor: pointer;
+    }
+    
+    .dismiss:hover,
+    .dismiss:focus {
+        background: #555;
+        color: #fff;
+    }
+    .sidebar ul.menu-elements {
+    padding: 10px 0;
+    border-bottom: 1px solid #444;
+    transition: all .3s;
+    }
+    
+    .sidebar ul li a {
+        display: block;
+        padding: 10px 20px;
+        border: 0;
+        color: #fff;
+    }
+    
+    .sidebar ul li a:hover,
+    .sidebar ul li a:focus,
+    .sidebar ul li.active > a:hover,
+    .sidebar ul li.active > a:focus {
+        outline: 0;
+        background: #555;
+        color: #fff;
+    }
+    
+    .sidebar ul li a i {
+        margin-right: 5px;
+    }
+    
+    .sidebar ul li.active > a,
+    a[aria-expanded="true"] {
+        background: #444;
+        color: #fff;
+    }
+    
+    .sidebar ul ul a {
+        background: #444;
+        padding-left: 30px;
+        font-size: 14px;
+    }
+    
+    .sidebar ul ul li.active > a {
+        background: #555;
+    }
+    
+    .sidebar a[data-toggle="collapse"] {
+        position: relative;
+    }
+    
+    .sidebar .dropdown-toggle::after {
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+    }
+    .sidebar .to-top {
+    padding: 20px;
+    text-align: center;
+}
+ 
+a.btn-customized-3 {
+    display: inline-block;
+    width: 100%;
+    margin: 0;
+    padding: .75rem 1.5rem;
+    background: #444;
+    border: 0;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 300;
+    color: #fff;
+    box-shadow: none;
+    }
+    
+    a.btn-customized-3:hover, 
+    a.btn-customized-3:active, 
+    a.btn-customized-3:focus, 
+    a.btn-customized-3:active:focus, 
+    a.btn-customized-3.active:focus,
+    a.btn-customized-3.btn.btn-primary:not(:disabled):not(.disabled):active,
+    a.btn-customized-3.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
+        outline: 0;
+        background: #555;
+        border: 0;
+        color: #fff;
+        box-shadow: none;
+    }
+    
+    a.btn-customized-3 i {
+        margin-right: 5px;
+    }
+    .sidebar .dark-light-buttons {
+    padding: 10px 20px 30px 20px;
+    text-align: center;
+}
+ 
+a.btn-customized-4 {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    margin: 0 3px;
+    padding: 0;
+    background: #444;
+    border: 0;
+    border-radius: 50%;
+    font-size: 16px;
+    font-weight: 300;
+    color: #fff;
+    box-shadow: none;
+    text-indent: -999999px;
+}
+ 
+a.btn-customized-4.btn-customized-dark {
+    background: #222;
+}
+ 
+a.btn-customized-4.btn-customized-light {
+    background: #fff;
+}
+ 
+a.btn-customized-4.btn-customized-dark:hover, 
+a.btn-customized-4.btn-customized-dark:active, 
+a.btn-customized-4.btn-customized-dark:focus, 
+a.btn-customized-4.btn-customized-dark:active:focus, 
+a.btn-customized-4.btn-customized-dark.active:focus,
+a.btn-customized-4.btn-customized-dark.btn.btn-primary:not(:disabled):not(.disabled):active,
+a.btn-customized-4.btn-customized-dark.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
+    outline: 0;
+    background: #555;
+    border: 0;
+    color: #fff;
+    box-shadow: none;
+}
+ 
+a.btn-customized-4.btn-customized-light:hover, 
+a.btn-customized-4.btn-customized-light:active, 
+a.btn-customized-4.btn-customized-light:focus, 
+a.btn-customized-4.btn-customized-light:active:focus, 
+a.btn-customized-4.btn-customized-light.active:focus,
+a.btn-customized-4.btn-customized-light.btn.btn-primary:not(:disabled):not(.disabled):active,
+a.btn-customized-4.btn-customized-light.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
+    outline: 0;
+    background: #555;
+    border: 0;
+    color: #fff;
+    box-shadow: none;
+}
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1),
+only screen and (        min-device-pixel-ratio: 2),
+only screen and (                min-resolution: 192dpi),
+only screen and (                min-resolution: 2dppx) {
+ 
+    .sidebar .logo a {
+        background-image: url(../img/logo@2x.png) !important;
+        background-repeat: no-repeat !important;
+        background-size: 172px 34px !important;
+    }
+ 
+    .sidebar.light .logo a {
+        background-image: url(../img/logo-dark@2x.png) !important;
+    }
+ 
+}s
+    </style>
+    <script src="https://kit.fontawesome.com/673e150704.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+  <!--
+    <header class="header shadow-sm smart-scroll">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#"><img src="justifynovel-logo.svg" height="30"/></a>
+  <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#openav" aria-controls="openav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fa fa-ellipsis-h"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="openav">
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2 search" type="search" placeholder="Search..." aria-label="Search">
+    </form>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="header-link" href="#"><i class="fas fa-book"></i> Daftar Novel</a>
+      </li>
+      <li class="nav-item">
+        
+        <a class="header-link" href="#"><i class="fas fa-tasks"></i> Proyek</a>
+        </i>
+        <li class="nav-item">
+        <a class="header-link" href="#"><i class="fas fa-comment-dots"></i> Ruang Ngobrol</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+    </header>
+    -->
+<!-- Wrapper -->
+<main class="wrapper">
+ 
+    <!-- Sidebar -->
+    <nav class="sidebar">
+ 
+        <!-- close sidebar menu -->
+        <div class="dismiss">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+ 
+        <div class="logo">
+            <h3><a href="index.html">Bootstrap 4 Template with Sidebar Menu</a></h3>
+        </div>
+ 
+        <ul class="list-unstyled menu-elements">
+            <li class="active">
+                <a class="scroll-link" href="#top-content"><i class="fas fa-home"></i> Home</a>
+            </li>
+            <li>
+                <a class="scroll-link" href="#section-1"><i class="fas fa-cog"></i> What we do</a>
+            </li>
+            <li>
+                <a class="scroll-link" href="#section-2"><i class="fas fa-user"></i> About us</a>
+            </li>
+            <li>
+                <a class="scroll-link" href="#section-5"><i class="fas fa-pencil-alt"></i> Portfolio</a>
+            </li>
+            <li>
+                <a class="scroll-link" href="#section-6"><i class="fas fa-envelope"></i> Contact us</a>
+            </li>
+            <li>
+                <a href="#otherSections" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button" aria-controls="otherSections">
+                    <i class="fas fa-sync"></i>Other sections
+                </a>
+                <ul class="collapse list-unstyled" id="otherSections">
+                    <li>
+                        <a class="scroll-link" href="#section-3">Our projects</a>
+                    </li>
+                    <li>
+                        <a class="scroll-link" href="#section-4">We think that...</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+ 
+        <div class="to-top">
+            <a class="btn btn-primary btn-customized-3" href="#" role="button">
+                <i class="fas fa-arrow-up"></i> Top
+            </a>
+        </div>
+ 
+        <div class="dark-light-buttons">
+            <a class="btn btn-primary btn-customized-4 btn-customized-dark" href="#" role="button">Dark</a>
+            <a class="btn btn-primary btn-customized-4 btn-customized-light" href="#" role="button">Light</a>
+        </div>
+ 
+    </nav>
+    <!-- End sidebar -->
+ 
+    <!-- Dark overlay -->
+    <div class="overlay"></div>
+ 
+    <!-- Content -->
+    <div class="content">
+ 
+        <!-- open sidebar menu -->
+        <a class="btn btn-primary btn-customized open-menu" href="#" role="button">
+            <i class="fas fa-align-left"></i> <span>Menu</span>
+        </a>
+ 
+        <!-- ... -->
+ 
+        <!-- here is the page's content (not shown here) -->
+ 
+        <!-- ... -->
+ 
+
+    
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris commodo tristique metus, at volutpat lacus. Sed odio neque, ornare at nibh nec, viverra dictum nibh. Ut molestie elit sit amet elit ullamcorper euismod. Ut sodales nulla ac semper fermentum. Vivamus egestas nisl arcu, id elementum dolor sagittis ut. Phasellus sed neque lectus. Curabitur nec sem a quam tempor gravida vitae at tellus. Nam convallis imperdiet tellus, non fringilla lorem. Vestibulum sollicitudin lobortis laoreet. Vestibulum ac lacus placerat, congue augue vel, mollis tellus. In laoreet, lacus in blandit sagittis, nulla ligula commodo diam, in mollis urna eros at nisl. Donec eget auctor diam, a aliquam augue. Suspendisse orci sem, blandit ut nisi et, convallis posuere erat.
+    <br/>
+    <br/>
+    Praesent id ante vitae velit facilisis posuere. Sed scelerisque viverra dolor et iaculis. Duis congue augue sed elit sodales, at vulputate nibh dictum. Suspendisse tempus, odio et feugiat pretium, nisl turpis blandit quam, eget fringilla neque sem ac tortor. Vestibulum sit amet faucibus justo. Proin sed ligula eu magna dictum euismod. Fusce gravida augue nisl, sit amet scelerisque sapien aliquam ac. Etiam viverra felis nibh, in elementum elit dictum nec. Nunc pulvinar dapibus posuere.
+    <p/>
+    Aenean ut tincidunt erat. Maecenas erat mi, pellentesque vel tortor ut, elementum vehicula lectus. Vestibulum facilisis enim eget nibh lobortis laoreet. Morbi non est ut orci pretium fringilla non ut ligula. Nullam facilisis a est ac vestibulum. Sed gravida lorem mauris, in egestas turpis blandit congue. Aenean id diam tortor. Aenean tempus sapien ipsum, eget auctor sem porttitor et. Sed non dolor venenatis, hendrerit leo ut, dictum ligula. Aenean dapibus lacinia sapien at ullamcorper. Sed lacinia, massa in ullamcorper lobortis, odio purus maximus tellus, vel ornare ex ligula eu est.
+    <br/>
+    Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin eget aliquet sem, non dapibus felis. Vestibulum ut ex nec nibh placerat finibus. Duis risus nisi, tempus a augue eget, luctus dapibus orci. Proin at lacus vel arcu rutrum ultricies. Vestibulum at fermentum leo, vitae dapibus erat. Fusce dapibus volutpat nunc, nec sollicitudin enim tempus eget. Duis ultrices ipsum fringilla lobortis ultricies. Vivamus tristique in eros vitae iaculis. Ut sed scelerisque ligula. Phasellus feugiat nisl eu mollis malesuada. Etiam viverra erat id feugiat condimentum. Fusce viverra ac eros nec facilisis. Fusce eget euismod turpis.
+    <br/>
+    Nulla elementum tincidunt efficitur. Aenean malesuada porttitor dapibus. In at commodo enim. Proin ut leo sed lectus malesuada congue. Proin sodales vel mauris vitae pulvinar. Aenean ullamcorper dui ut ipsum blandit aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam hendrerit tortor sed dui fermentum, at sodales sapien mattis.
+    <br/>
+    Mauris porttitor est lacus, dignissim vulputate urna euismod a. Phasellus ut nisl eu enim ultricies semper. Curabitur nec nunc turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vel mauris diam. Donec tristique congue ligula. Maecenas dui tellus, vulputate sit amet libero eu, facilisis viverra enim. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse a porta sem. Quisque quis gravida augue. Fusce accumsan tortor vel magna facilisis, at facilisis magna ultrices. Aliquam dictum nisl eros, eu feugiat velit euismod id. Donec in odio vel orci dapibus dapibus. Mauris eu odio sed quam ullamcorper volutpat. Praesent pretium metus a enim tristique elementum.
+    <br/>
+    Maecenas eu facilisis libero. Duis quis mi eu ipsum iaculis dignissim. Integer pulvinar posuere quam at vulputate. Curabitur tempus suscipit turpis commodo gravida. Nulla eu sollicitudin purus. Suspendisse potenti. Donec posuere tincidunt quam, in ultrices enim semper vitae. Fusce tincidunt enim nec sem blandit, et fermentum magna consequat. Nulla eget ullamcorper arcu, mollis feugiat ante. Aenean elit felis, condimentum eget metus vitae, vehicula posuere neque. Nullam iaculis, libero ac condimentum cursus, nisl tortor blandit lectus, ac maximus urna ligula sed orci. In eu ullamcorper sapien. Aenean non condimentum dui, id sagittis magna.
+    <br/>
+    Suspendisse fringilla ante ut lectus efficitur eleifend. Vestibulum in velit sit amet turpis pellentesque ultrices et quis tellus. Fusce bibendum nibh eros, sed viverra augue efficitur sit amet. Maecenas vel dui eget lorem imperdiet consectetur. Aliquam id dapibus magna, sit amet vulputate turpis. Phasellus mattis nunc lorem, id commodo nisi lacinia et. Nulla blandit auctor orci non tincidunt. Ut porta, leo a vehicula auctor, purus turpis tristique justo, at iaculis lectus sem ultrices ante. Donec suscipit hendrerit urna, nec scelerisque justo fermentum et. Curabitur suscipit, leo a rutrum dignissim, sapien mauris gravida nulla, eget porta magna enim sit amet odio. Nam sagittis elit velit, ut rhoncus nibh malesuada nec. Etiam ut libero varius, laoreet massa vitae, aliquam est. Aenean ac tristique magna, eu congue dolor. Curabitur sed tortor id diam ultrices hendrerit interdum quis nisi. Nullam a nulla et sem tincidunt varius. Nam nec ultricies justo, aliquam tempus velit.
+    <br/>
+    Duis ut purus vitae massa faucibus ullamcorper ut ornare orci. In suscipit mauris nibh, et elementum purus tristique id. Mauris id erat at neque aliquet volutpat. Donec nec ante purus. Cras hendrerit semper libero sed efficitur. Quisque varius dictum sapien vel sollicitudin. Duis ultrices tortor ac congue tempus. Vivamus porta orci in mi convallis, id efficitur mi auctor. Aenean eu massa sit amet quam scelerisque tincidunt. Ut sem elit, ultricies eget velit tempus, efficitur sagittis tortor. Ut pellentesque auctor orci eu interdum. Etiam fringilla diam id turpis venenatis, et sollicitudin erat rutrum. Fusce at elit in enim venenatis pellentesque malesuada sit amet mauris.
+    <br/>
+    Duis laoreet vestibulum ex in efficitur. Proin sit amet justo nec sapien malesuada suscipit a sed diam. In aliquet, nulla in interdum euismod, lectus nisl consequat massa, quis consequat est nibh at nulla. In feugiat ipsum erat. In nec sem non dui suscipit facilisis ut id lacus. Proin at dolor quam. Sed eleifend, mi quis efficitur ultrices, tellus nisl blandit dolor, in tincidunt tellus justo id tellus.
+    <br/>
+    Etiam ut libero lobortis arcu iaculis condimentum. Praesent eget ullamcorper mi. Integer a orci dignissim, viverra odio sed, mattis mauris. Curabitur velit lacus, accumsan et porttitor eu, convallis sed turpis. Sed a mauris pharetra, venenatis est eget, luctus nisi. Curabitur ornare in urna nec accumsan. Nam eget nulla sed enim vestibulum viverra. Mauris eget ligula at ipsum iaculis vehicula. Maecenas at auctor nisi, vel tincidunt est. Maecenas consequat, tellus non interdum elementum, purus quam vulputate magna, at lacinia lectus erat a sapien. In hac habitasse platea dictumst. Donec fringilla tellus vel nisl gravida, a vulputate velit pretium. Aliquam erat volutpat.
+    <br/>
+    Quisque eget elit euismod, volutpat diam at, efficitur purus. Nunc fermentum nisl facilisis nulla accumsan, quis luctus lacus luctus. Nullam maximus finibus volutpat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam non semper ex. Donec hendrerit porta hendrerit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus eget lobortis nisi. Proin eu luctus diam.
+    <br/>
+    Proin sollicitudin, risus ut porta pharetra, urna erat tincidunt nulla, vel faucibus est eros id lorem. Morbi vulputate, mi non sagittis aliquam, odio ligula auctor ipsum, tincidunt maximus nisi arcu in ipsum. Duis dui arcu, viverra eu dui in, dignissim aliquet massa. Curabitur fermentum, sem et tincidunt tristique, diam dui ultrices leo, eu posuere erat massa et dolor. In hac habitasse platea dictumst. Cras tempus scelerisque justo eu varius. Duis sed magna quis nunc mattis condimentum non sed urna. Vivamus aliquam libero elit, et dignissim dolor pulvinar vel. In fringilla diam ac tellus pharetra auctor. Aenean cursus dui tortor, at rutrum ante sagittis et. Sed eleifend lectus dolor, eget facilisis est dignissim sed. Quisque eu mattis odio, vitae consequat odio. Pellentesque iaculis varius neque et euismod. Sed porttitor pretium lacus non finibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec metus dui, porta sed bibendum ac, mollis eu risus.
+    <br/>
+    Quisque aliquet interdum mauris, ac varius mauris gravida ac. Praesent eu hendrerit ex. In sagittis ultrices massa at sagittis. In cursus, ante quis consequat viverra, mi tellus finibus nunc, non pretium lacus felis nec dolor. Nullam lobortis orci sapien, eu dapibus felis fringilla vitae. Aliquam aliquam id ipsum nec laoreet. Duis porta condimentum dolor, quis congue lorem mattis sit amet. Nunc gravida lectus ac nibh tristique fermentum. Vestibulum dictum, urna ac volutpat interdum, ante lectus gravida justo, nec ultricies felis erat eu lorem. Suspendisse potenti. Quisque quis malesuada risus, et vestibulum lacus.
+    <br/>
+    Proin at molestie ligula. In hac habitasse platea dictumst. Aenean eu pharetra nunc, a accumsan ipsum. Quisque nulla arcu, suscipit id iaculis non, blandit eget justo. In volutpat nisi a est sollicitudin iaculis. Aliquam vestibulum metus libero, eget vehicula sem ultricies volutpat. Mauris gravida massa quis aliquet consectetur. Ut a elit nec dolor tempor euismod sollicitudin congue felis. Aliquam mattis neque eget mi varius egestas. Maecenas ut lacus accumsan, convallis nisi eget, aliquet neque. Cras dui felis, convallis et magna a, lobortis vestibulum elit. Sed a elit tempus, elementum lorem eu, ullamcorper nisi. Aenean lacinia sagittis purus, ac facilisis arcu vestibulum at. Cras posuere a diam luctus cursus. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+    </div>
+    <!-- End content -->
+    
+    </main> 
+<!-- End wrapper -->
+
+    <footer></footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script>
+    $('body').css('padding-top', $('.navbar').outerHeight() + 'px')
+
+    // detect scroll top or down
+    if ($('.smart-scroll').length > 0) { // check if element exists
+        var last_scroll_top = 0;
+        $(window).on('scroll', function() {
+            scroll_top = $(this).scrollTop();
+            if(scroll_top < last_scroll_top) {
+                $('.smart-scroll').removeClass('scrolled-down').addClass('scrolled-up');
+            }
+            else {
+                $('.smart-scroll').removeClass('scrolled-up').addClass('scrolled-down');
+            }
+            last_scroll_top = scroll_top;
+        });
+    }
+   /* Open and Close */ 
+    jQuery(document).ready(function() {
+ 
+    $('.dismiss, .overlay').on('click', function() {
+        $('.sidebar').removeClass('active');
+        $('.overlay').removeClass('active');
+    });
+ 
+    $('.open-menu').on('click', function(e) {
+        e.preventDefault();
+        $('.sidebar').addClass('active');
+        $('.overlay').addClass('active');
+        // close opened sub-menus
+        $('.collapse.show').toggleClass('show');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+    });
+ 
+    /* other code */
+ 
+});
+/*
+    Navigation
+*/
+$('a.scroll-link').on('click', function(e) {
+    e.preventDefault();
+    scroll_to($(this), 0);
+});
+ 
+function scroll_to(clicked_link, nav_height) {
+    var element_class = clicked_link.attr('href').replace('#', '.');
+    var scroll_to = 0;
+    if(element_class != '.top-content') {
+        element_class += '-container';
+        scroll_to = $(element_class).offset().top - nav_height;
+    }
+    if($(window).scrollTop() != scroll_to) {
+        $('html, body').stop().animate({scrollTop: scroll_to}, 1000);
+    }
+}
+$('.to-top a').on('click', function(e) {
+    e.preventDefault();
+    if($(window).scrollTop() != 0) {
+        $('html, body').stop().animate({scrollTop: 0}, 1000);
+    }
+});
+$('a.btn-customized-dark').on('click', function(e) {
+    e.preventDefault();
+    $('.sidebar').removeClass('light');
+});
+ 
+$('a.btn-customized-light').on('click', function(e) {
+    e.preventDefault();
+    $('.sidebar').addClass('light');
+});
+$('.section-container').waypoint(function(direction) {
+    if (direction === 'down') {
+        $('.menu-elements li').removeClass('active');
+        $('.menu-elements a[href="#' + this.element.id + '"]').parents('li').addClass('active');
+    }
+},
+{
+    offset: '0'
+});
+ 
+$('.section-container').waypoint(function(direction) {
+    if (direction === 'up') {
+        $('.menu-elements li').removeClass('active');
+        $('.menu-elements a[href="#' + this.element.id + '"]').parents('li').addClass('active');
+    }
+},
+{
+    offset: '-5'
+});
+
+$('.sidebar').mCustomScrollbar({
+    theme: "minimal-dark"
+});
+    </script>
+  </body>
+</html>
