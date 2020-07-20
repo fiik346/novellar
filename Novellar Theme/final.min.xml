@@ -349,7 +349,7 @@ var _0xb7ca=["\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x61\x72\x64\x
 <script type='text/javascript'>
 var mql = window.matchMedia(&#39;screen and (min-width: 350px)&#39;);if (mql.matches){
 var disqus_loaded = false;
-var disqus_shortname = &#39;nnovel&#39;; //Add your shortname here
+var disqus_shortname = &#39;DISQUS-SHORT-NAME&#39;; //Add your shortname here
 var disqus_url = disqus_blogger_current_url;
 var disqus_blogger_current_url = &quot;<data:blog.canonicalUrl/>&quot;;
 if (!disqus_blogger_current_url.length) {
